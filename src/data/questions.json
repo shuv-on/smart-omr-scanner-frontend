@@ -1,30 +1,30 @@
 {
   "ict": [
-    { "id": "ict_1", "question": "কম্পিউটারের ব্রেইন বলা হয় কাকে?", "options": ["RAM", "Monitor", "CPU", "Hard Disk"], "correctAnswer": "CPU" },
-    { "id": "ict_2", "question": "WWW এর পূর্ণরূপ কী?", "options": ["World Wide Web", "World Web Wide", "Word Wide Web", "World Wide Word"], "correctAnswer": "World Wide Web" },
-    { "id": "ict_3", "question": "Next.js কোন ভাষার ফ্রেমওয়ার্ক?", "options": ["Python", "Java", "JavaScript", "C++"], "correctAnswer": "JavaScript" },
-    { "id": "ict_4", "question": "নিচের কোনটি ইনপুট ডিভাইস নয়?", "options": ["কিবোর্ড", "মাউস", "মনিটর", "স্ক্যানার"], "correctAnswer": "মনিটর" },
-    { "id": "ict_5", "question": "১ বাইট (Byte) সমান কত বিট (Bit)?", "options": ["৪", "৮", "১৬", "৩২"], "correctAnswer": "৮" }
+    { "id": "ict_1", "question": "কম্পিউটারের ব্রেইন বলা হয় কাকে?", "options": ["RAM", "Monitor", "CPU", "Hard Disk"], "correctAnswer": "C" },
+    { "id": "ict_2", "question": "WWW এর পূর্ণরূপ কী?", "options": ["World Wide Web", "World Web Wide", "Word Wide Web", "World Wide Word"], "correctAnswer": "A" },
+    { "id": "ict_3", "question": "Next.js কোন ভাষার ফ্রেমওয়ার্ক?", "options": ["Python", "Java", "JavaScript", "C++"], "correctAnswer": "C" },
+    { "id": "ict_4", "question": "নিচের কোনটি ইনপুট ডিভাইস নয়?", "options": ["কিবোর্ড", "মাউস", "মনিটর", "স্ক্যানার"], "correctAnswer": "C" },
+    { "id": "ict_5", "question": "১ বাইট (Byte) সমান কত বিট (Bit)?", "options": ["৪", "৮", "১৬", "৩২"], "correctAnswer": "B" }
   ],
   "science": [
-    { "id": "sci_1", "question": "পানির রাসায়নিক সংকেত কী?", "options": ["H2O2", "CO2", "O2", "H2O"], "correctAnswer": "H2O" },
-    { "id": "sci_2", "question": "কোষের পাওয়ার হাউস বলা হয় কাকে?", "options": ["নিউক্লিয়াস", "মাইটোকন্ড্রিয়া", "রাইবোজোম", "গলগি বডি"], "correctAnswer": "মাইটোকন্ড্রিয়া" },
-    { "id": "sci_3", "question": "মানুষের স্বাভাবিক শরীরের তাপমাত্রা কত?", "options": ["৯৬.৪°F", "৯৭.৪°F", "৯৮.৪°F", "৯৯.৪°F"], "correctAnswer": "৯৮.৪°F" },
-    { "id": "sci_4", "question": "আলোকবর্ষ (Light Year) দিয়ে কী মাপা হয়?", "options": ["সময়", "আলোর তীব্রতা", "দূরত্ব", "গতি"], "correctAnswer": "দূরত্ব" },
-    { "id": "sci_5", "question": "সর্বজনীন দাতা (Universal Donor) রক্তের গ্রুপ কোনটি?", "options": ["A+", "B+", "AB+", "O-"], "correctAnswer": "O-" }
+    { "id": "sci_1", "question": "পানির রাসায়নিক সংকেত কী?", "options": ["H2O2", "CO2", "O2", "H2O"], "correctAnswer": "D" },
+    { "id": "sci_2", "question": "কোষের পাওয়ার হাউস বলা হয় কাকে?", "options": ["নিউক্লিয়াস", "মাইটোকন্ড্রিয়া", "রাইবোজোম", "গলগি বডি"], "correctAnswer": "B" },
+    { "id": "sci_3", "question": "মানুষের স্বাভাবিক শরীরের তাপমাত্রা কত?", "options": ["৯৬.৪°F", "৯৭.৪°F", "৯৮.৪°F", "৯৯.৪°F"], "correctAnswer": "C" },
+    { "id": "sci_4", "question": "আলোকবর্ষ (Light Year) দিয়ে কী মাপা হয়?", "options": ["সময়", "আলোর তীব্রতা", "দূরত্ব", "গতি"], "correctAnswer": "C" },
+    { "id": "sci_5", "question": "সর্বজনীন দাতা (Universal Donor) রক্তের গ্রুপ কোনটি?", "options": ["A+", "B+", "AB+", "O-"], "correctAnswer": "D" }
   ],
   "gk": [
-    { "id": "gk_1", "question": "বাংলাদেশের স্বাধীনতা দিবস কবে?", "options": ["২১ ফেব্রুয়ারি", "২৬ মার্চ", "১৬ ডিসেম্বর", "১ বৈশাখ"], "correctAnswer": "২৬ মার্চ" },
-    { "id": "gk_2", "question": "পৃথিবীর দীর্ঘতম সমুদ্র সৈকত কোথায় অবস্থিত?", "options": ["কক্সবাজার", "মায়ামি", "বালি", "পাতায়া"], "correctAnswer": "কক্সবাজার" },
-    { "id": "gk_3", "question": "জাপানের মুদ্রার নাম কী?", "options": ["ইউরো", "ডলার", "ইয়েন", "রুপী"], "correctAnswer": "ইয়েন" },
-    { "id": "gk_4", "question": "বাংলাদেশের জাতীয় সংসদের আসন সংখ্যা কত?", "options": ["৩০০", "৩২০", "৩৫০", "৪০০"], "correctAnswer": "৩৫০" },
-    { "id": "gk_5", "question": "বিশ্বের সবচেয়ে বড় মহাদেশ কোনটি?", "options": ["আফ্রিকা", "এশিয়া", "ইউরোপ", "উত্তর আমেরিকা"], "correctAnswer": "এশিয়া" }
+    { "id": "gk_1", "question": "বাংলাদেশের স্বাধীনতা দিবস কবে?", "options": ["২১ ফেব্রুয়ারি", "২৬ মার্চ", "১৬ ডিসেম্বর", "১ বৈশাখ"], "correctAnswer": "B" },
+    { "id": "gk_2", "question": "পৃথিবীর দীর্ঘতম সমুদ্র সৈকত কোথায় অবস্থিত?", "options": ["কক্সবাজার", "মায়ামি", "বালি", "পাতায়া"], "correctAnswer": "A" },
+    { "id": "gk_3", "question": "জাপানের মুদ্রার নাম কী?", "options": ["ইউরো", "ডলার", "ইয়েন", "রুপী"], "correctAnswer": "C" },
+    { "id": "gk_4", "question": "বাংলাদেশের জাতীয় সংসদের আসন সংখ্যা কত?", "options": ["৩০০", "৩২০", "৩৫০", "৪০০"], "correctAnswer": "C" },
+    { "id": "gk_5", "question": "বিশ্বের সবচেয়ে বড় মহাদেশ কোনটি?", "options": ["আফ্রিকা", "এশিয়া", "ইউরোপ", "উত্তর আমেরিকা"], "correctAnswer": "B" }
   ],
   "bangla": [
-    { "id": "ban_1", "question": "বাংলাদেশের জাতীয় কবি কে?", "options": ["রবীন্দ্রনাথ ঠাকুর", "কাজী নজরুল ইসলাম", "জসীমউদ্দীন", "মাইকেল মধুসূদন দত্ত"], "correctAnswer": "কাজী নজরুল ইসলাম" },
-    { "id": "ban_2", "question": "বাংলা বর্ণমালায় স্বরবর্ণ কয়টি?", "options": ["১০টি", "১১টি", "১২টি", "৩৯টি"], "correctAnswer": "১১টি" },
-    { "id": "ban_3", "question": "রবীন্দ্রনাথ ঠাকুর কত সালে নোবেল পুরস্কার পান?", "options": ["১৯১০", "১৯১১", "১৯১৩", "১৯১৪"], "correctAnswer": "১৯১৩" },
-    { "id": "ban_4", "question": "‘গীতাঞ্জলি’ কাব্যগ্রন্থের রচয়িতা কে?", "options": ["কাজী নজরুল ইসলাম", "রবীন্দ্রনাথ ঠাকুর", "জীবনানন্দ দাশ", "শরৎচন্দ্র চট্টোপাধ্যায়"], "correctAnswer": "রবীন্দ্রনাথ ঠাকুর" },
-    { "id": "ban_5", "question": "বাংলা ভাষার আদি নিদর্শনের নাম কী?", "options": ["চর্যাপদ", "শ্রীকৃষ্ণকীর্তন", "মঙ্গলকাব্য", "বৈষ্ণব পদাবলি"], "correctAnswer": "চর্যাপদ" }
+    { "id": "ban_1", "question": "বাংলাদেশের জাতীয় কবি কে?", "options": ["রবীন্দ্রনাথ ঠাকুর", "কাজী নজরুল ইসলাম", "জসীমউদ্দীন", "মাইকেল মধুসূদন দত্ত"], "correctAnswer": "B" },
+    { "id": "ban_2", "question": "বাংলা বর্ণমালায় স্বরবর্ণ কয়টি?", "options": ["১০টি", "১১টি", "১২টি", "৩৯টি"], "correctAnswer": "B" },
+    { "id": "ban_3", "question": "রবীন্দ্রনাথ ঠাকুর কত সালে নোবেল পুরস্কার পান?", "options": ["১৯১০", "১৯১১", "১৯১৩", "১৯১৪"], "correctAnswer": "C" },
+    { "id": "ban_4", "question": "‘গীতাঞ্জলি’ কাব্যগ্রন্থের রচয়িতা কে?", "options": ["কাজী নজরুল ইসলাম", "রবীন্দ্রনাথ ঠাকুর", "জীবনানন্দ দাশ", "শরৎচন্দ্র চট্টোপাধ্যায়"], "correctAnswer": "B" },
+    { "id": "ban_5", "question": "বাংলা ভাষার আদি নিদর্শনের নাম কী?", "options": ["চর্যাপদ", "শ্রীকৃষ্ণকীর্তন", "মঙ্গলকাব্য", "বৈষ্ণব পদাবলি"], "correctAnswer": "A" }
   ]
 }

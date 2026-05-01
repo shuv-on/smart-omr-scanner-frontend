@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, BookOpen, LogOut } from "lucide-react";
+import { LayoutDashboard, BookOpen, LogOut, ScanLine } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
