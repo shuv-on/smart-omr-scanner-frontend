@@ -4,27 +4,47 @@
     { "id": "ict_2", "question": "WWW এর পূর্ণরূপ কী?", "options": ["World Wide Web", "World Web Wide", "Word Wide Web", "World Wide Word"], "correctAnswer": "A" },
     { "id": "ict_3", "question": "Next.js কোন ভাষার ফ্রেমওয়ার্ক?", "options": ["Python", "Java", "JavaScript", "C++"], "correctAnswer": "C" },
     { "id": "ict_4", "question": "নিচের কোনটি ইনপুট ডিভাইস নয়?", "options": ["কিবোর্ড", "মাউস", "মনিটর", "স্ক্যানার"], "correctAnswer": "C" },
-    { "id": "ict_5", "question": "১ বাইট (Byte) সমান কত বিট (Bit)?", "options": ["৪", "৮", "১৬", "৩২"], "correctAnswer": "B" }
+    { "id": "ict_5", "question": "১ বাইট (Byte) সমান কত বিট (Bit)?", "options": ["৪", "৮", "১৬", "৩২"], "correctAnswer": "B" },
+    { "id": "ict_6", "question": "URL এর পূর্ণরূপ কী?", "options": ["Uniform Resource Locator", "Universal Resource Link", "Uniform Registered Link", "Unified Resource Locator"], "correctAnswer": "A" },
+    { "id": "ict_7", "question": "নিচের কোনটি অপারেটিং সিস্টেম নয়?", "options": ["Windows", "Linux", "MS Word", "macOS"], "correctAnswer": "C" },
+    { "id": "ict_8", "question": "১ গিগাবাইট (GB) সমান কত মেগাবাইট (MB)?", "options": ["১০০০", "১০২৪", "১০৪৮", "৫১২"], "correctAnswer": "B" },
+    { "id": "ict_9", "question": "HTML এর পূর্ণরূপ কী?", "options": ["Hyper Text Markup Language", "High Text Machine Language", "Hyperlink Text Markup Language", "Home Tool Markup Language"], "correctAnswer": "A" },
+    { "id": "ict_10", "question": "ব্লুটুথ (Bluetooth) প্রযুক্তি কোন ধরনের নেটওয়ার্ক?", "options": ["LAN", "PAN", "MAN", "WAN"], "correctAnswer": "B" }
   ],
   "science": [
     { "id": "sci_1", "question": "পানির রাসায়নিক সংকেত কী?", "options": ["H2O2", "CO2", "O2", "H2O"], "correctAnswer": "D" },
     { "id": "sci_2", "question": "কোষের পাওয়ার হাউস বলা হয় কাকে?", "options": ["নিউক্লিয়াস", "মাইটোকন্ড্রিয়া", "রাইবোজোম", "গলগি বডি"], "correctAnswer": "B" },
     { "id": "sci_3", "question": "মানুষের স্বাভাবিক শরীরের তাপমাত্রা কত?", "options": ["৯৬.৪°F", "৯৭.৪°F", "৯৮.৪°F", "৯৯.৪°F"], "correctAnswer": "C" },
     { "id": "sci_4", "question": "আলোকবর্ষ (Light Year) দিয়ে কী মাপা হয়?", "options": ["সময়", "আলোর তীব্রতা", "দূরত্ব", "গতি"], "correctAnswer": "C" },
-    { "id": "sci_5", "question": "সর্বজনীন দাতা (Universal Donor) রক্তের গ্রুপ কোনটি?", "options": ["A+", "B+", "AB+", "O-"], "correctAnswer": "D" }
+    { "id": "sci_5", "question": "সর্বজনীন দাতা (Universal Donor) রক্তের গ্রুপ কোনটি?", "options": ["A+", "B+", "AB+", "O-"], "correctAnswer": "D" },
+    { "id": "sci_6", "question": "বলের একক কী?", "options": ["প্যাসকেল", "নিউটন", "জুল", "ওয়াট"], "correctAnswer": "B" },
+    { "id": "sci_7", "question": "লাফিং গ্যাসের রাসায়নিক নাম কী?", "options": ["নাইট্রাস অক্সাইড", "নাইট্রিক অক্সাইড", "কার্বন মনোক্সাইড", "সালফার ডাই অক্সাইড"], "correctAnswer": "A" },
+    { "id": "sci_8", "question": "ভিটামিন সি এর অভাবে কোন রোগ হয়?", "options": ["রাতকানা", "রিকেটস", "স্কার্ভি", "বেরিবেরি"], "correctAnswer": "C" },
+    { "id": "sci_9", "question": "বায়ুমণ্ডলে কোন গ্যাসের পরিমাণ সবচেয়ে বেশি?", "options": ["অক্সিজেন", "নাইট্রোজেন", "কার্বন ডাই অক্সাইড", "হাইড্রোজেন"], "correctAnswer": "B" },
+    { "id": "sci_10", "question": "পেনিসিলিন কে আবিষ্কার করেন?", "options": ["আলেকজান্ডার ফ্লেমিং", "লুই পাস্তুর", "মেরি কুরি", "আইজ্যাক নিউটন"], "correctAnswer": "A" }
   ],
   "gk": [
     { "id": "gk_1", "question": "বাংলাদেশের স্বাধীনতা দিবস কবে?", "options": ["২১ ফেব্রুয়ারি", "২৬ মার্চ", "১৬ ডিসেম্বর", "১ বৈশাখ"], "correctAnswer": "B" },
     { "id": "gk_2", "question": "পৃথিবীর দীর্ঘতম সমুদ্র সৈকত কোথায় অবস্থিত?", "options": ["কক্সবাজার", "মায়ামি", "বালি", "পাতায়া"], "correctAnswer": "A" },
     { "id": "gk_3", "question": "জাপানের মুদ্রার নাম কী?", "options": ["ইউরো", "ডলার", "ইয়েন", "রুপী"], "correctAnswer": "C" },
     { "id": "gk_4", "question": "বাংলাদেশের জাতীয় সংসদের আসন সংখ্যা কত?", "options": ["৩০০", "৩২০", "৩৫০", "৪০০"], "correctAnswer": "C" },
-    { "id": "gk_5", "question": "বিশ্বের সবচেয়ে বড় মহাদেশ কোনটি?", "options": ["আফ্রিকা", "এশিয়া", "ইউরোপ", "উত্তর আমেরিকা"], "correctAnswer": "B" }
+    { "id": "gk_5", "question": "বিশ্বের সবচেয়ে বড় মহাদেশ কোনটি?", "options": ["আফ্রিকা", "এশিয়া", "ইউরোপ", "উত্তর আমেরিকা"], "correctAnswer": "B" },
+    { "id": "gk_6", "question": "বাংলাদেশের জাতীয় ফল কোনটি?", "options": ["আম", "জাম", "কাঁঠাল", "লিচু"], "correctAnswer": "C" },
+    { "id": "gk_7", "question": "শহীদ মিনার এর স্থপতি কে?", "options": ["হামিদুর রহমান", "সৈয়দ মাইনুল হোসেন", "এফ আর খান", "শামীম সিকদার"], "correctAnswer": "A" },
+    { "id": "gk_8", "question": "মুক্তিযুদ্ধের সময় বাংলাদেশকে কয়টি সেক্টরে ভাগ করা হয়েছিল?", "options": ["১০", "১১", "১২", "৯"], "correctAnswer": "B" },
+    { "id": "gk_9", "question": "জাতিসংঘের সদর দপ্তর কোথায় অবস্থিত?", "options": ["জেনেভা", "নিউইয়র্ক", "প্যারিস", "লন্ডন"], "correctAnswer": "B" },
+    { "id": "gk_10", "question": "বাংলাদেশের সবচেয়ে বড় জেলা কোনটি?", "options": ["ঢাকা", "চট্টগ্রাম", "রাঙ্গামাটি", "রাজশাহী"], "correctAnswer": "C" }
   ],
   "bangla": [
     { "id": "ban_1", "question": "বাংলাদেশের জাতীয় কবি কে?", "options": ["রবীন্দ্রনাথ ঠাকুর", "কাজী নজরুল ইসলাম", "জসীমউদ্দীন", "মাইকেল মধুসূদন দত্ত"], "correctAnswer": "B" },
     { "id": "ban_2", "question": "বাংলা বর্ণমালায় স্বরবর্ণ কয়টি?", "options": ["১০টি", "১১টি", "১২টি", "৩৯টি"], "correctAnswer": "B" },
     { "id": "ban_3", "question": "রবীন্দ্রনাথ ঠাকুর কত সালে নোবেল পুরস্কার পান?", "options": ["১৯১০", "১৯১১", "১৯১৩", "১৯১৪"], "correctAnswer": "C" },
     { "id": "ban_4", "question": "‘গীতাঞ্জলি’ কাব্যগ্রন্থের রচয়িতা কে?", "options": ["কাজী নজরুল ইসলাম", "রবীন্দ্রনাথ ঠাকুর", "জীবনানন্দ দাশ", "শরৎচন্দ্র চট্টোপাধ্যায়"], "correctAnswer": "B" },
-    { "id": "ban_5", "question": "বাংলা ভাষার আদি নিদর্শনের নাম কী?", "options": ["চর্যাপদ", "শ্রীকৃষ্ণকীর্তন", "মঙ্গলকাব্য", "বৈষ্ণব পদাবলি"], "correctAnswer": "A" }
+    { "id": "ban_5", "question": "বাংলা ভাষার আদি নিদর্শনের নাম কী?", "options": ["চর্যাপদ", "শ্রীকৃষ্ণকীর্তন", "মঙ্গলকাব্য", "বৈষ্ণব পদাবলি"], "correctAnswer": "A" },
+    { "id": "ban_6", "question": "বাংলা বর্ণমালায় ব্যঞ্জনবর্ণ কয়টি?", "options": ["১১টি", "২৫টি", "৫০টি", "৩৯টি"], "correctAnswer": "D" },
+    { "id": "ban_7", "question": "‘বিদ্রোহী’ কবিতাটি কাজী নজরুল ইসলামের কোন কাব্যগ্রন্থের অন্তর্গত?", "options": ["অগ্নিবীণা", "বিষের বাঁশি", "সাম্যবাদী", "দোলনচাঁপা"], "correctAnswer": "A" },
+    { "id": "ban_8", "question": "‘কবর’ নাটকের রচয়িতা কে?", "options": ["জসীমউদ্দীন", "সৈয়দ ওয়ালীউল্লাহ", "মুনীর চৌধুরী", "দ্বিজেন্দ্রলাল রায়"], "correctAnswer": "C" },
+    { "id": "ban_9", "question": "বাংলা সাহিত্যের প্রথম সার্থক উপন্যাস কোনটি?", "options": ["আলালের ঘরের দুলাল", "দুর্গেশনন্দিনী", "বিষাদ সিন্ধু", "পথের পাঁচালী"], "correctAnswer": "B" },
+    { "id": "ban_10", "question": "‘শেষের কবিতা’ রবীন্দ্রনাথ ঠাকুরের কী ধরনের রচনা?", "options": ["কবিতা", "নাটক", "উপন্যাস", "ছোটগল্প"], "correctAnswer": "C" }
   ]
 }

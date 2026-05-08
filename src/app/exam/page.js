@@ -16,11 +16,10 @@ export default function ExamPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isScanning, setIsScanning] = useState(false);
   
-  // ছবির ফাইল ও প্রিভিউ স্টেট
   const [imagePreview, setImagePreview] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   
-  const [results, setResults] = useState({ score: 0, correct: 0, wrong: 0, penalty: 0, total: 0 });
+  const [results, setResults] = useState({ score: 0, correct: 0, wrong: 0, penalty: 0, total: 0, irtScore: 0 });
   const [timeLeft, setTimeLeft] = useState(600);
   const timerRef = useRef(null);
   const NEGATIVE_MARK = 0.25;
@@ -60,7 +59,7 @@ export default function ExamPage() {
     if (isSubmitted) return;
     clearInterval(timerRef.current);
     const currentQuestions = questionsData[selectedCategory];
-    processResults(answers, currentQuestions, false);
+    processResults(answers, currentQuestions);
   };
 
   const handleImageUpload = (e) => {
@@ -71,9 +70,6 @@ export default function ExamPage() {
     }
   };
 
-  // ==========================================
-  // OMR Scanner Logic (Spring Boot API Connection)
-  // ==========================================
   const handleOMRScan = async () => {
     if (!imageFile) {
       alert("Please upload an image first!");
@@ -86,53 +82,81 @@ export default function ExamPage() {
       formData.append("omrImage", imageFile);
       formData.append("category", selectedCategory);
 
-      const response = await fetch("http://localhost:8080/api/omr/scan", {
+      const response = await fetch("http://localhost:8000/api/scan-omr", {
         method: "POST",
         body: formData,
       });
       
-      // --- এই অংশটুকু নতুন আপডেট করা হয়েছে ---
-      const text = await response.text(); // সরাসরি JSON না পড়ে আগে Text হিসেবে পড়া হচ্ছে
-      
-      if (!text) {
-        alert(`Server blocked the request or returned empty! (Status: ${response.status})`);
-        setIsScanning(false);
-        return;
-      }
-      
-      const data = JSON.parse(text); // টেক্সট ঠিক থাকলে তারপর JSON-এ কনভার্ট করা হচ্ছে
-      // ----------------------------------------
+      const data = await response.json(); 
       
       if (data.status === "success") {
-        setAnswers(data.detectedAnswers); 
-        processResults(data.detectedAnswers, questionsData[selectedCategory], true);
+        setImagePreview(data.processedImage); 
+        
+        const questions = questionsData[selectedCategory];
+        const formattedAnswers = {};
+        const backendValues = Object.values(data.detectedAnswers);
+        
+        // 🚀 সরাসরি A, B, C, D সেট করা হচ্ছে
+        questions.forEach((q, idx) => {
+           formattedAnswers[q.id] = backendValues[idx] || "NOT_ANSWERED";
+        });
+
+        setAnswers(formattedAnswers);
+        processResults(formattedAnswers, questions);
+
       } else {
         alert("Server Error: " + (data.message || "Failed to parse OMR"));
       }
     } catch (error) {
       console.error("OMR Scanning Failed:", error);
-      alert("Connection Failed! Spring Boot সার্ভার কি চালু আছে?");
+      alert("Connection Failed! Python FastAPI সার্ভার (main.py) কি চালু আছে?");
     } finally {
       setIsScanning(false);
     }
   };
 
-  const processResults = (userAnswers, questions, isOMR) => {
+  const processResults = (userAnswers, questions) => {
     let correct = 0;
     let wrong = 0;
     
     questions.forEach((q) => {
-      // JSON-এর প্রশ্নের id এবং উত্তরের key মিলতে হবে (যেমন: "q1", "q2")
-      if (userAnswers[q.id]) {
-        if (userAnswers[q.id] === q.correctAnswer) correct += 1;
-        else wrong += 1;
+      if (userAnswers[q.id] && userAnswers[q.id] !== "NOT_ANSWERED") {
+        // 🚀 A, B, C, D এর সাথে A, B, C, D মেলানো হচ্ছে
+        if (userAnswers[q.id] === q.correctAnswer) {
+            correct += 1;
+        } else {
+            wrong += 1;
+        }
       }
     });
 
     const penalty = wrong * NEGATIVE_MARK;
     const finalScore = correct - penalty;
 
-    setResults({ score: finalScore, correct, wrong, penalty, total: questions.length });
+    const accuracy = questions.length > 0 ? (correct / questions.length) : 0;
+    let dynamicIrt = (accuracy * 6) - 3; 
+    dynamicIrt = parseFloat(dynamicIrt.toFixed(2));
+
+    const savedHistory = JSON.parse(localStorage.getItem("examHistory")) || [];
+    const newExam = {
+      category: selectedCategory,
+      date: new Date().toLocaleDateString(),
+      score: finalScore,
+      total: questions.length,
+      percentage: (finalScore / questions.length) * 100,
+      irtScore: dynamicIrt
+    };
+    localStorage.setItem("examHistory", JSON.stringify([...savedHistory, newExam]));
+
+    setResults({ 
+        score: finalScore, 
+        correct: correct, 
+        wrong: wrong, 
+        penalty: penalty, 
+        total: questions.length, 
+        irtScore: dynamicIrt 
+    });
+    
     setIsSubmitted(true);
   };
 
@@ -145,15 +169,17 @@ export default function ExamPage() {
     const questions = questionsData[selectedCategory];
     return (
       <div className="mt-8 bg-white p-6 rounded-2xl shadow-inner border border-gray-200 animate-fade-in-down">
-        <h3 className="text-xl font-bold mb-6 text-center text-gray-800">Regenerated OMR Sheet</h3>
+        <h3 className="text-xl font-bold mb-6 text-center text-gray-800">Digital Answer Sheet</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
           {questions.map((q, index) => (
             <div key={q.id} className="flex items-center gap-4 py-2 border-b border-dashed border-gray-100">
               <span className="w-6 font-bold text-gray-400">{index + 1}.</span>
               <div className="flex gap-3">
                 {q.options.map((option, i) => {
-                  const isUserSelected = answers[q.id] === option;
-                  const isCorrect = q.correctAnswer === option;
+                  // 🚀 অপশনের ইনডেক্স থেকে A, B, C, D বের করা হচ্ছে
+                  const optionLetter = String.fromCharCode(65 + i); 
+                  const isUserSelected = answers[q.id] === optionLetter;
+                  const isCorrect = q.correctAnswer === optionLetter;
                   
                   let bubbleClass = "border-2 border-gray-300 text-gray-400";
                   if (isUserSelected && isCorrect) bubbleClass = "bg-green-500 border-green-500 text-white shadow-sm";
@@ -162,12 +188,12 @@ export default function ExamPage() {
 
                   return (
                     <div key={i} className={`h-8 w-8 rounded-full flex items-center justify-center text-xs transition-all ${bubbleClass}`}>
-                      {String.fromCharCode(65 + i)}
+                      {optionLetter}
                     </div>
                   );
                 })}
               </div>
-              {answers[q.id] ? (
+              {answers[q.id] && answers[q.id] !== "NOT_ANSWERED" ? (
                 answers[q.id] === q.correctAnswer ? 
                 <FileCheck className="h-4 w-4 text-green-500 ml-auto" /> : 
                 <X className="h-4 w-4 text-red-500 ml-auto" />
@@ -189,20 +215,36 @@ export default function ExamPage() {
 
           <div className="mb-8 rounded-2xl bg-white p-6 shadow-lg border-t-4 border-green-500">
             <h2 className="text-2xl font-bold text-center mb-6 text-gray-900">Results: {selectedCategory.toUpperCase()}</h2>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 text-center">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 text-center mb-6">
               <div className="p-4 bg-blue-50 rounded-xl"><p className="text-xs font-bold text-blue-600 mb-1">SCORE</p><p className="text-3xl font-black text-gray-800">{results.score}</p></div>
               <div className="p-4 bg-green-50 rounded-xl"><p className="text-xs font-bold text-green-600 mb-1">CORRECT</p><p className="text-3xl font-black text-gray-800">{results.correct}</p></div>
               <div className="p-4 bg-red-50 rounded-xl"><p className="text-xs font-bold text-red-600 mb-1">WRONG</p><p className="text-3xl font-black text-gray-800">{results.wrong}</p></div>
               <div className="p-4 bg-orange-50 rounded-xl"><p className="text-xs font-bold text-orange-600 mb-1">TOTAL</p><p className="text-3xl font-black text-gray-800">{results.total}</p></div>
             </div>
             
+            <div className="p-6 bg-purple-50 border-2 border-purple-200 rounded-xl text-center mb-6">
+                <p className="text-sm font-bold text-purple-600 uppercase tracking-wider mb-2">AI-Predicted IRT Ability Score</p>
+                <p className={`text-5xl font-black ${results.irtScore > 0 ? 'text-green-600' : results.irtScore < 0 ? 'text-red-500' : 'text-purple-800'}`}>
+                  {results.irtScore > 0 ? `+${results.irtScore}` : results.irtScore}
+                </p>
+            </div>
+
             <button 
               onClick={() => setShowDigitalOMR(!showDigitalOMR)}
-              className="mt-8 w-full py-4 bg-gray-900 text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-gray-800 transition shadow-md"
+              className="mt-4 w-full py-4 bg-gray-900 text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-gray-800 transition shadow-md"
             >
-              <Eye className="h-5 w-5" /> {showDigitalOMR ? "Hide Marked OMR" : "View Marked OMR"}
+              <Eye className="h-5 w-5" /> {showDigitalOMR ? "Hide Digital Sheet" : "View Digital Answer Sheet"}
             </button>
             {showDigitalOMR && <DigitalOMRView />}
+
+            {examMode === 'scan' && imagePreview && (
+               <div className="mt-8 border rounded-xl overflow-hidden shadow-sm">
+                   <h3 className="bg-gray-100 p-3 text-center font-bold text-gray-700 border-b">AI Analyzed OMR Image</h3>
+                   <div className="flex justify-center p-4 bg-gray-50">
+                     <img src={imagePreview} alt="Analyzed OMR" className="max-w-full object-contain max-h-[600px] rounded" />
+                   </div>
+               </div>
+            )}
           </div>
         </div>
       </div>
@@ -272,15 +314,19 @@ export default function ExamPage() {
               <div key={q.id} className="rounded-xl bg-white p-6 shadow-sm border border-gray-100">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">{index + 1}. {q.question}</h3>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  {q.options.map((option, idx) => (
-                    <div 
-                      key={idx} 
-                      onClick={() => setAnswers({ ...answers, [q.id]: option })} 
-                      className={`p-4 border rounded-lg cursor-pointer transition-all ${answers[q.id] === option ? "border-blue-500 bg-blue-50 font-medium" : "border-gray-200 hover:bg-gray-50"}`}
-                    >
-                      {option}
-                    </div>
-                  ))}
+                  {q.options.map((option, idx) => {
+                    // 🚀 অনলাইনে অপশন সিলেক্ট করার সময়ও A, B, C, D সেভ করা হচ্ছে
+                    const optionLetter = String.fromCharCode(65 + idx);
+                    return (
+                      <div 
+                        key={idx} 
+                        onClick={() => setAnswers({ ...answers, [q.id]: optionLetter })} 
+                        className={`p-4 border rounded-lg cursor-pointer transition-all ${answers[q.id] === optionLetter ? "border-blue-500 bg-blue-50 font-medium" : "border-gray-200 hover:bg-gray-50"}`}
+                      >
+                        <span className="font-bold mr-2">{optionLetter}.</span> {option}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ))}
@@ -332,7 +378,7 @@ export default function ExamPage() {
                 <ScanLine className="h-5 w-5" /> Start Analyzing
               </button>
             )}
-            {isScanning && <p className="text-center mt-4 text-blue-600 font-medium animate-pulse">Analyzing answers through Spring Boot...</p>}
+            {isScanning && <p className="text-center mt-4 text-blue-600 font-medium animate-pulse">Analyzing answers through AI Model...</p>}
           </div>
         </div>
         <style dangerouslySetInnerHTML={{__html: `@keyframes scan { 0% { transform: translateY(0); } 50% { transform: translateY(320px); } 100% { transform: translateY(0); } }`}} />

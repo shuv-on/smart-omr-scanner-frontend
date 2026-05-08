@@ -10,7 +10,7 @@ export default function Navbar() {
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
 
-  // Next.js hydration error এড়ানোর জন্য
+  // Next.js hydration error এড়ানোর জন্য
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -64,6 +64,18 @@ export default function Navbar() {
                 }`}
               >
                 <BookOpen className="h-4 w-4" /> Exams
+              </Link>
+
+              {/* 🚀 নতুন Scanner লিংক যোগ করা হলো */}
+              <Link 
+                href="/scanner" 
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                  pathname === "/scanner" 
+                    ? "bg-blue-50 text-blue-700" 
+                    : "text-gray-600 hover:bg-gray-50 hover:text-blue-600"
+                }`}
+              >
+                <ScanLine className="h-4 w-4" /> Scanner
               </Link>
             </div>
           </div>
